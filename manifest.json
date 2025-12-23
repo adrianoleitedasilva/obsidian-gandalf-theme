@@ -7,13 +7,3 @@
 	"authorUrl": "https://adrianosilva.pro.br",
 	"isDesktopOnly": false
 }
-
-
-{
-  "name": "Gandalf Theme",
-  "version": "0.1.0",
-  "author": "Adriano Silva",
-  "minAppVersion": "1.0.0",
-  
-  "isDesktopOnly": false
-}
