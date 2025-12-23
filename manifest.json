@@ -1,11 +1,19 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "gandalf-theme",
+	"name": "Gandalf Theme",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"description": "A dark, minimalist Obsidian theme inspired by Gandalf — focused on focus and readability.",	"author": "Obsidian",
+	"authorUrl": "https://adrianosilva.pro.br",
 	"isDesktopOnly": false
+}
+
+
+{
+  "name": "Gandalf Theme",
+  "version": "0.1.0",
+  "author": "Adriano Silva",
+  "minAppVersion": "1.0.0",
+  
+  "isDesktopOnly": false
 }
