@@ -1,0 +1,418 @@
+/* =========================================================
+   Gandalf Theme — Obsidian
+   Base: dark, minimalist, deep gray, focused on readability
+   ========================================================= */
+
+/* -----------------------------
+   1) Core tokens (colors, radii)
+------------------------------ */
+:root {
+	/* Surfaces */
+	--g-bg-0: #0b0c0f; /* deepest */
+	--g-bg-1: #0f1116; /* app background */
+	--g-bg-2: #141824; /* panels */
+	--g-bg-3: #1a2030; /* hover / subtle layers */
+
+	/* Text */
+	--g-fg-0: #e6e8ef; /* primary text */
+	--g-fg-1: #b9c0cf; /* secondary text */
+	--g-fg-2: #8a93a6; /* muted text */
+
+	/* Accents */
+	--g-accent: #8da2ff; /* links, highlights */
+	--g-accent-2: #79d6c6; /* secondary accent (subtle) */
+	--g-warn: #ffcc66;
+	--g-danger: #ff6b6b;
+	--g-ok: #7bd88f;
+
+	/* Lines / borders */
+	--g-border: rgba(255, 255, 255, 0.08);
+	--g-border-2: rgba(255, 255, 255, 0.12);
+
+	/* Shadows */
+	--g-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+
+	/* Radius */
+	--g-r-xs: 6px;
+	--g-r-sm: 10px;
+	--g-r-md: 14px;
+
+	/* Typography */
+	--g-font-ui: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+		Arial, sans-serif;
+	--g-font-text: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+		Arial, sans-serif;
+	--g-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+		"Liberation Mono", monospace;
+
+	/* Spacing */
+	--g-pad-xs: 6px;
+	--g-pad-sm: 10px;
+	--g-pad-md: 14px;
+}
+
+/* -----------------------------------------
+   2) Map tokens to Obsidian CSS variables
+------------------------------------------ */
+.theme-dark {
+	/* App background + panels */
+	--background-primary: var(--g-bg-1);
+	--background-primary-alt: var(--g-bg-2);
+	--background-secondary: #0e1015;
+	--background-secondary-alt: #111420;
+
+	/* Modals / popovers */
+	--background-modifier-form-field: var(--g-bg-2);
+	--background-modifier-form-field-highlighted: var(--g-bg-3);
+	--background-modifier-box-shadow: var(--g-shadow);
+
+	/* Text */
+	--text-normal: var(--g-fg-0);
+	--text-muted: var(--g-fg-1);
+	--text-faint: var(--g-fg-2);
+	--text-on-accent: #0b0c0f;
+
+	/* Links */
+	--link-color: var(--g-accent);
+	--link-color-hover: #a9b7ff;
+
+	/* Borders / dividers */
+	--divider-color: var(--g-border);
+	--background-modifier-border: var(--g-border);
+	--background-modifier-border-hover: var(--g-border-2);
+
+	/* Selection + highlights */
+	--text-selection: rgba(141, 162, 255, 0.28);
+	--text-highlight-bg: rgba(121, 214, 198, 0.18);
+
+	/* Interactive states */
+	--interactive-normal: var(--g-bg-2);
+	--interactive-hover: var(--g-bg-3);
+	--interactive-accent: var(--g-accent);
+	--interactive-accent-hover: #a9b7ff;
+
+	/* Scrollbar */
+	--scrollbar-bg: transparent;
+	--scrollbar-thumb-bg: rgba(255, 255, 255, 0.12);
+	--scrollbar-active-thumb-bg: rgba(255, 255, 255, 0.18);
+
+	/* Fonts */
+	--font-interface: var(--g-font-ui);
+	--font-text: var(--g-font-text);
+	--font-monospace: var(--g-font-mono);
+
+	/* Radius */
+	--radius-s: var(--g-r-xs);
+	--radius-m: var(--g-r-sm);
+	--radius-l: var(--g-r-md);
+}
+
+/* -----------------------------------------
+   3) Global UI polish
+------------------------------------------ */
+body {
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+.workspace,
+.app-container {
+	background: var(--background-primary);
+}
+
+.workspace-split.mod-root .view-content {
+	background: var(--background-primary);
+}
+
+.mod-active .workspace-leaf-content {
+	border-radius: var(--radius-m);
+}
+
+/* Sidebars */
+.workspace-ribbon,
+.workspace-tab-header-container,
+.workspace-tabs {
+	background: var(--background-secondary);
+	border-color: var(--divider-color);
+}
+
+/* Subtle borders */
+.workspace-leaf,
+.workspace-leaf-content,
+.workspace-tab-header {
+	border-color: var(--divider-color);
+}
+
+/* -----------------------------------------
+   4) Editor: readability-focused
+------------------------------------------ */
+.markdown-source-view.mod-cm6 .cm-scroller {
+	padding: 18px 18px 80px;
+}
+
+.markdown-reading-view .markdown-preview-view {
+	padding: 22px 22px 80px;
+}
+
+/* Line length (nice default; adjust later) */
+.markdown-reading-view .markdown-preview-sizer,
+.markdown-source-view.mod-cm6 .cm-contentContainer {
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+/* Headings */
+.markdown-rendered h1,
+.markdown-rendered h2,
+.markdown-rendered h3,
+.markdown-rendered h4,
+.markdown-rendered h5,
+.markdown-rendered h6 {
+	color: var(--text-normal);
+	letter-spacing: 0.2px;
+}
+
+.markdown-rendered h1 {
+	font-size: 2em;
+	margin-top: 1.2em;
+}
+.markdown-rendered h2 {
+	font-size: 1.6em;
+	margin-top: 1.1em;
+}
+.markdown-rendered h3 {
+	font-size: 1.3em;
+	margin-top: 1em;
+}
+.markdown-rendered h4 {
+	font-size: 1.15em;
+}
+.markdown-rendered h5 {
+	font-size: 1.05em;
+	opacity: 0.95;
+}
+.markdown-rendered h6 {
+	font-size: 1em;
+	opacity: 0.9;
+}
+
+/* Paragraph + lists */
+.markdown-rendered p {
+	color: var(--text-normal);
+	line-height: 1.65;
+}
+
+.markdown-rendered ul,
+.markdown-rendered ol {
+	line-height: 1.6;
+}
+
+/* Links */
+.markdown-rendered a {
+	color: var(--link-color);
+	text-decoration: none;
+	border-bottom: 1px solid rgba(141, 162, 255, 0.25);
+}
+.markdown-rendered a:hover {
+	color: var(--link-color-hover);
+	border-bottom-color: rgba(141, 162, 255, 0.55);
+}
+
+/* Blockquotes */
+.markdown-rendered blockquote {
+	border-left: 3px solid rgba(121, 214, 198, 0.35);
+	background: rgba(255, 255, 255, 0.03);
+	border-radius: var(--radius-s);
+	padding: 10px 12px;
+	margin: 14px 0;
+}
+.markdown-rendered blockquote p {
+	color: var(--text-muted);
+	margin: 0;
+}
+
+/* Horizontal rule */
+.markdown-rendered hr {
+	border: none;
+	height: 1px;
+	background: var(--divider-color);
+	margin: 22px 0;
+}
+
+/* -----------------------------------------
+   5) Code blocks & inline code
+------------------------------------------ */
+.markdown-rendered code,
+.cm-s-obsidian span.cm-inline-code,
+.cm-s-obsidian .cm-inline-code {
+	font-family: var(--font-monospace);
+}
+
+.markdown-rendered code {
+	background: rgba(255, 255, 255, 0.06);
+	border: 1px solid var(--g-border);
+	border-radius: var(--radius-s);
+	padding: 0.12em 0.35em;
+	color: #d7dcff;
+}
+
+.markdown-rendered pre {
+	background: rgba(255, 255, 255, 0.04);
+	border: 1px solid var(--g-border);
+	border-radius: var(--radius-m);
+	padding: 14px 14px;
+	overflow: auto;
+}
+
+.markdown-rendered pre code {
+	background: transparent;
+	border: none;
+	padding: 0;
+	color: var(--text-normal);
+}
+
+/* -----------------------------------------
+   6) Tables
+------------------------------------------ */
+.markdown-rendered table {
+	border-collapse: collapse;
+	width: 100%;
+	overflow: hidden;
+	border: 1px solid var(--g-border);
+	border-radius: var(--radius-m);
+}
+
+.markdown-rendered th,
+.markdown-rendered td {
+	border-bottom: 1px solid var(--g-border);
+	padding: 10px 12px;
+}
+
+.markdown-rendered th {
+	background: rgba(255, 255, 255, 0.03);
+	color: var(--text-normal);
+	text-align: left;
+}
+
+.markdown-rendered tr:hover td {
+	background: rgba(255, 255, 255, 0.02);
+}
+
+/* -----------------------------------------
+   7) Callouts (Obsidian)
+------------------------------------------ */
+.callout {
+	border-radius: var(--radius-m);
+	border: 1px solid var(--g-border);
+	background: rgba(255, 255, 255, 0.03);
+	box-shadow: none;
+}
+
+.callout-title {
+	font-weight: 600;
+	color: var(--text-normal);
+}
+
+.callout-content {
+	color: var(--text-muted);
+}
+
+.callout[data-callout="note"] {
+	border-color: rgba(141, 162, 255, 0.25);
+}
+.callout[data-callout="tip"] {
+	border-color: rgba(121, 214, 198, 0.25);
+}
+.callout[data-callout="warning"] {
+	border-color: rgba(255, 204, 102, 0.25);
+}
+.callout[data-callout="danger"] {
+	border-color: rgba(255, 107, 107, 0.25);
+}
+
+/* -----------------------------------------
+   8) Tags
+------------------------------------------ */
+a.tag {
+	background: rgba(141, 162, 255, 0.12);
+	color: var(--text-normal);
+	border: 1px solid rgba(141, 162, 255, 0.2);
+	border-radius: 999px;
+	padding: 2px 10px;
+	text-decoration: none;
+}
+
+a.tag:hover {
+	background: rgba(141, 162, 255, 0.18);
+	border-color: rgba(141, 162, 255, 0.28);
+}
+
+/* -----------------------------------------
+   9) Checkboxes (task lists)
+------------------------------------------ */
+.markdown-rendered input[type="checkbox"] {
+	width: 16px;
+	height: 16px;
+	border-radius: 4px;
+	border: 1px solid var(--g-border-2);
+	background: rgba(255, 255, 255, 0.03);
+	vertical-align: middle;
+}
+
+.markdown-rendered input[type="checkbox"]:checked {
+	background: rgba(121, 214, 198, 0.35);
+	border-color: rgba(121, 214, 198, 0.45);
+}
+
+/* -----------------------------------------
+   10) Graph view (subtle)
+------------------------------------------ */
+.graph-view.color-fill {
+	color: rgba(141, 162, 255, 0.35);
+}
+.graph-view.color-line {
+	color: rgba(255, 255, 255, 0.08);
+}
+.graph-view.color-text {
+	color: rgba(230, 232, 239, 0.85);
+}
+
+/* -----------------------------------------
+   11) Scrollbar
+------------------------------------------ */
+::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+}
+::-webkit-scrollbar-track {
+	background: var(--scrollbar-bg);
+}
+::-webkit-scrollbar-thumb {
+	background: var(--scrollbar-thumb-bg);
+	border-radius: 999px;
+	border: 3px solid transparent;
+	background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: var(--scrollbar-active-thumb-bg);
+	background-clip: content-box;
+}
+
+/* -----------------------------------------
+   12) Small UI improvements
+------------------------------------------ */
+.modal,
+.popover,
+.menu {
+	border-radius: var(--radius-m);
+	border: 1px solid var(--g-border);
+}
+
+.menu-item:hover {
+	background: rgba(255, 255, 255, 0.04);
+}
+
+.workspace-tab-header.is-active {
+	background: rgba(255, 255, 255, 0.03);
+	border-bottom: 1px solid rgba(141, 162, 255, 0.25);
+}
